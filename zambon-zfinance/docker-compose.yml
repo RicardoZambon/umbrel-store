@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  zfinance_frontend:
+    image: ricardozambon/zfinance-frontend:latest
+    ports:
+      - "2020:80"
+    depends_on:
+      zfinance_webapi
+
+  zfinance_webapi:
+    image: ricardozambon/zfinance-webapi:latest

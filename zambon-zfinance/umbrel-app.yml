@@ -1,9 +1,9 @@
 manifestVersion: 1
-id: sparkles-hello-world
-name: Hello World
-tagline: Replace this tagline with your app's tagline
+id: zambon-zfinance
+name: ZFinance
+tagline: Finance App
 icon: https://svgur.com/i/mvA.svg
-category: Development
+category: Finance
 version: "1.0.0"
 port: 4000
 description: >-
@@ -12,12 +12,12 @@ description: >-
 
   You can also add newlines!
 
-developer: Umbrel
-website: https://umbrel.com
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+developer: Ricardo Zambon
+website: https://github.com/RicardoZambon
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon/ZFinance
+repo: https://github.com/RicardoZambon/ZFinance
+support: https://github.com/RicardoZambon/ZFinance/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
   - https://i.imgur.com/yyVG0Jb.jpeg
