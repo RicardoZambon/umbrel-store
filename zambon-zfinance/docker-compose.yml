@@ -1,12 +1,19 @@
-version: "3.7"
-
 services:
   zfinance_frontend:
-    image: ricardozambon/zfinance-frontend:latest
+    image: zambondev/zfinance-frontend:latest
+    hostname: zfinance
     ports:
       - "2020:80"
     depends_on:
-      zfinance_webapi
+      - zfinance_webapi
+    environment:
+      BACKEND_HOST: zfinance_webapi
+      BACKEND_PORT: 8080
 
   zfinance_webapi:
-    image: ricardozambon/zfinance-webapi:latest
+    image: zambondev/zfinance-webapi:latest
+    hostname: zfinance_webapi
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=umbrel.local; Database=ZFinance; User Id=ZFinance; Password=myfinance; TrustServerCertificate=True;
+      - JWT__Key=2HERTFd+fgU*Lc3jWD5Bw7hpAhAF9ZFgc8QqCzPoT
+      - Sentry__Dsn=
