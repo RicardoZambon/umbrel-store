@@ -17,3 +17,4 @@ services:
       - ConnectionStrings__DefaultConnection=Server=sqlserver; Database=ZFinance; User Id=ZFinance; Password=myfinance; TrustServerCertificate=True;
       - JWT__Key=2HERTFd+fgU*Lc3jWD5Bw7hpAhAF9ZFgc8QqCzPoT
       - Sentry__Dsn=
+      - ASPNETCORE__ENVIRONMENT=Development 
