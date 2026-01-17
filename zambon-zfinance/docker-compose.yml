@@ -9,12 +9,25 @@ services:
     environment:
       BACKEND_HOST: zfinance_webapi
       BACKEND_PORT: 8080
+    networks:
+      - zambon-zfinance_default
 
   zfinance_webapi:
     image: zambondev/zfinance-webapi:latest
     hostname: zfinance_webapi
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Server=sqlserver; Database=ZFinance; User Id=ZFinance; Password=myfinance; TrustServerCertificate=True;
       - JWT__Key=2HERTFd+fgU*Lc3jWD5Bw7hpAhAF9ZFgc8QqCzPoT
       - Sentry__Dsn=
+    networks:
+      - sql-server
+      - zambon-zfinance_default
+
+networks:
+  sql-server:
+    name: sql-server
+    driver: bridge
+  zambon-zfinance_default:
+    name: zambon-zfinance_default
+    driver: bridge
