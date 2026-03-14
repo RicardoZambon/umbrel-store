@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: sql-server-2025
+name: SQL Server 2025
+tagline: Microsoft's enterprise relational database engine
+icon: https://img.icons8.com/color/480/microsoft-sql-server.png
+category: Development
+version: "2025"
+port: 1433
+description: >-
+  Microsoft SQL Server 2025 is a powerful, enterprise-grade relational database management system.
+  Run it directly on your Umbrel server to host databases for your applications,
+  perform data analytics, and manage structured data with full T-SQL support.
+
+
+  Connects on port 1433 with the default SA credentials configured in the container.
+  Use any SQL Server client (Azure Data Studio, SSMS, DBeaver) to connect and manage your databases.
+
+developer: Microsoft
+website: https://www.microsoft.com/sql-server
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/microsoft/mssql-docker
+support: https://github.com/microsoft/mssql-docker/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of SQL Server 2025 for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: "sa"
+defaultPassword: "SqlServer2025!"

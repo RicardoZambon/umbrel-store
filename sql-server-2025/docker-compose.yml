@@ -1,0 +1,23 @@
+services:
+  sql-server-2025:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: sql-server-2025
+    hostname: sql-server-2025
+    restart: unless-stopped
+    networks:
+      - sql-server
+    ports:
+      - "1433:1433"
+    volumes:
+      - /home/umbrel/umbrel/app-data/sql-server-2025:/var/opt/mssql:rw
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: SqlServer2025!
+      MSSQL_SA_PASSWORD: SqlServer2025!
+      TZ: America/Sao_Paulo
+      MSSQL_PID: Standard
+
+networks:
+  sql-server:
+    name: sql-server
+    driver: bridge
