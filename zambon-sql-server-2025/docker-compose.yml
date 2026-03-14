@@ -3,6 +3,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2025-latest
     container_name: sql-server-2025
     hostname: sql-server-2025
+    user: "0:0"
     restart: unless-stopped
     networks:
       - sql-server
