@@ -21,8 +21,6 @@ submitter: Ricardo Zambon
 submission: https://github.com/RicardoZambon
 repo: https://github.com/microsoft/mssql-docker
 support: https://github.com/microsoft/mssql-docker/issues
-gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
   Initial release of SQL Server 2025 for UmbrelOS.
 dependencies: []
