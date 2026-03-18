@@ -9,7 +9,8 @@ services:
     environment:
       SSH_HOST: ${SSH_HOST:-119.8.77.80}
       SSH_USER: ${SSH_USER:-admindocker}
-      SSH_PASSWORD: ${SSH_PASSWORD:?SSH_PASSWORD must be set in .env file}
+      SSH_PASSWORD: ${SSH_PASSWORD:-changeme}
       DB_HOST: ${DB_HOST:-localhost}
     env_file:
-      - /home/umbrel/umbrel/home/Apps/zambon-ssh-tunnel-qa/.env
+      - path: /home/umbrel/umbrel/home/Apps/zambon-ssh-tunnel-qa/.env
+        required: false
