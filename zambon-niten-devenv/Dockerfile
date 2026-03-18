@@ -53,10 +53,11 @@ RUN code-server \
     --install-extension muhammad-sammy.csharp \
     ; exit 0
 
-USER 1000
+# Create custom entrypoint that starts SSH + code-server
+RUN printf '#!/bin/bash\n/usr/sbin/sshd\nexec /usr/bin/entrypoint.sh --bind-addr 0.0.0.0:8443 --auth password /home/coder/workspace\n' \
+    > /usr/bin/entrypoint-custom.sh \
+    && chmod +x /usr/bin/entrypoint-custom.sh
 
-# Start both SSH and code-server
-COPY entrypoint-custom.sh /usr/bin/entrypoint-custom.sh
-RUN chmod +x /usr/bin/entrypoint-custom.sh
+USER 1000
 
 ENTRYPOINT ["/usr/bin/entrypoint-custom.sh"]
