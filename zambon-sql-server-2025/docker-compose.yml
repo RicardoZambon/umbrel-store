@@ -10,7 +10,7 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      - /home/umbrel/umbrel/app-data/sql-server-2025:/var/opt/mssql:rw
+      - /home/umbrel/umbrel/home/Apps/sql-server-2025:/var/opt/mssql:rw
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: SqlServer2025!

@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: zambon-ssh-tunnel-qa
+name: SSH Tunnel QA
+tagline: SSH tunnel to QA database
+icon: https://img.icons8.com/color/480/ssh.png
+category: Development
+version: "1.0"
+port: 3306
+description: >-
+  SSH tunnel that forwards local port 3306 to a remote QA database through an SSH connection.
+  Uses ricardozambon/tunnel image to establish the tunnel automatically on startup.
+
+
+  After installing, update the environment file at
+  /home/umbrel/umbrel/home/Apps/zambon-ssh-tunnel-qa/.env
+  with your SSH credentials before starting the app.
+
+developer: Ricardo Zambon
+website: https://github.com/RicardoZambon
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/RicardoZambon
+support: https://github.com/RicardoZambon
+gallery: []
+releaseNotes: >-
+  Initial release of SSH Tunnel for QA database.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

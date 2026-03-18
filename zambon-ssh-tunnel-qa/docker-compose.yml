@@ -1,0 +1,15 @@
+services:
+  ssh-tunnel-qa:
+    image: ricardozambon/tunnel:latest
+    container_name: ssh-tunnel-qa
+    hostname: ssh-tunnel-qa
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      SSH_HOST: ${SSH_HOST:-119.8.77.80}
+      SSH_USER: ${SSH_USER:-admindocker}
+      SSH_PASSWORD: ${SSH_PASSWORD:?SSH_PASSWORD must be set in .env file}
+      DB_HOST: ${DB_HOST:-localhost}
+    env_file:
+      - /home/umbrel/umbrel/home/Apps/zambon-ssh-tunnel-qa/.env
