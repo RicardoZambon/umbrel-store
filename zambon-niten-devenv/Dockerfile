@@ -54,10 +54,8 @@ RUN code-server \
     ; exit 0
 
 # Create custom entrypoint that starts SSH + code-server
-RUN printf '#!/bin/bash\n/usr/sbin/sshd\nexec /usr/bin/entrypoint.sh --bind-addr 0.0.0.0:8443 --auth password /home/coder/workspace\n' \
+RUN printf '#!/bin/bash\nchown -R 1000:1000 /home/coder/.local /home/coder/workspace /home/coder/.claude /home/coder/.ssh 2>/dev/null || true\nchmod 700 /home/coder/.ssh 2>/dev/null || true\nchmod 600 /home/coder/.ssh/* 2>/dev/null || true\n/usr/sbin/sshd\nexec su coder -c "/usr/bin/entrypoint.sh --bind-addr 0.0.0.0:8443 --auth password /home/coder/workspace"\n' \
     > /usr/bin/entrypoint-custom.sh \
     && chmod +x /usr/bin/entrypoint-custom.sh
-
-USER 1000
 
 ENTRYPOINT ["/usr/bin/entrypoint-custom.sh"]

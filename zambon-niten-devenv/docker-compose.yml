@@ -17,6 +17,7 @@ services:
       - /home/umbrel/umbrel/app-data/zambon-niten-devenv/workspace:/home/coder/workspace
       - /home/umbrel/umbrel/app-data/zambon-niten-devenv/config:/home/coder/.local/share/code-server
       - /home/umbrel/umbrel/app-data/zambon-niten-devenv/claude:/home/coder/.claude
+      - /home/umbrel/umbrel/app-data/zambon-niten-devenv/ssh:/home/coder/.ssh
     environment:
       PASSWORD: niten2025
       TZ: America/Sao_Paulo
