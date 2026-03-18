@@ -1,0 +1,21 @@
+services:
+  code-server:
+    image: ricardozambon/niten-devenv:latest
+    container_name: niten-devenv
+    hostname: niten-devenv
+    restart: unless-stopped
+    ports:
+      - "8443:8443"
+      - "4200:4200"
+      - "4201:4201"
+      - "4202:4202"
+      - "5205:5205"
+      - "5152:5152"
+      - "5131:5131"
+    volumes:
+      - /home/umbrel/umbrel/app-data/zambon-niten-devenv/workspace:/home/coder/workspace
+      - /home/umbrel/umbrel/app-data/zambon-niten-devenv/config:/home/coder/.local/share/code-server
+      - /home/umbrel/umbrel/app-data/zambon-niten-devenv/claude:/home/coder/.claude
+    environment:
+      PASSWORD: niten2025
+      TZ: America/Sao_Paulo

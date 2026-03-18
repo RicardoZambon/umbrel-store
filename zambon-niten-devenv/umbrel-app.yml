@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: zambon-niten-devenv
+name: Niten Dev Environment
+tagline: Browser-based VS Code with Angular and .NET pre-configured
+icon: https://img.icons8.com/fluency/480/visual-studio-code-2019.png
+category: Development
+version: "1.0.0"
+port: 8443
+description: >-
+  Remote development environment for the Niten System project, powered by code-server (VS Code in the browser).
+  Comes pre-installed with Node.js 22, Angular CLI, .NET SDK 9.0, and essential VS Code extensions.
+
+
+  Access a full development environment from any device's browser without using your own computer's resources.
+
+
+  After first launch, clone your repos into the workspace and run the setup script to configure
+  dotnet user-secrets and install npm dependencies.
+
+developer: Ricardo Zambon
+website: https://github.com/RicardoZambon
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/RicardoZambon
+support: https://github.com/RicardoZambon
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of Niten Dev Environment for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: "niten2025"
