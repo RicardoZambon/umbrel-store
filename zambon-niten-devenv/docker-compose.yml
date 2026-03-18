@@ -5,6 +5,7 @@ services:
     hostname: niten-devenv
     restart: unless-stopped
     ports:
+      - "2222:22"
       - "8443:8443"
       - "4200:4200"
       - "4201:4201"

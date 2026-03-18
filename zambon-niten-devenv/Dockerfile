@@ -9,6 +9,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         wget \
         git \
         openssh-client \
+        openssh-server \
         sshpass \
         ca-certificates \
         gnupg \
@@ -35,6 +36,11 @@ ENV PATH="${PATH}:/usr/share/dotnet"
 # Install Claude Code CLI
 RUN npm install -g @anthropic-ai/claude-code
 
+# Configure SSH server
+RUN mkdir -p /run/sshd \
+    && echo 'coder:coder' | chpasswd \
+    && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
 # Install VS Code extensions from Open VSX
 # Note: ms-dotnettools.csharp and csdevkit are Microsoft-proprietary
 # and not available on Open VSX. Use "C# Dev Kit" alternative or
@@ -49,4 +55,8 @@ RUN code-server \
 
 USER 1000
 
-ENTRYPOINT ["/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8443", "--auth", "password", "/home/coder/workspace"]
+# Start both SSH and code-server
+COPY entrypoint-custom.sh /usr/bin/entrypoint-custom.sh
+RUN chmod +x /usr/bin/entrypoint-custom.sh
+
+ENTRYPOINT ["/usr/bin/entrypoint-custom.sh"]
