@@ -2,7 +2,7 @@ manifestVersion: 1
 id: zambon-pgadmin
 name: pgAdmin
 tagline: Web-based administration tool for PostgreSQL
-icon: https://img.icons8.com/fluency/480/pgadmin.png
+icon: https://raw.githubusercontent.com/pgadmin-org/pgadmin4/master/web/pgadmin/static/img/logo-256.png
 category: Development
 version: "latest"
 port: 5050
@@ -29,5 +29,5 @@ releaseNotes: >-
 dependencies:
   - zambon-postgresql
 path: ""
-defaultUsername: "admin@umbrel.local"
+defaultUsername: "admin@umbrel.com"
 defaultPassword: "PgAdmin2025!"

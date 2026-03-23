@@ -12,7 +12,7 @@ services:
     volumes:
       - /home/umbrel/umbrel/home/Apps/zambon-pgadmin:/var/lib/pgadmin:rw
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@umbrel.local
+      PGADMIN_DEFAULT_EMAIL: admin@umbrel.com
       PGADMIN_DEFAULT_PASSWORD: PgAdmin2025!
       PGADMIN_LISTEN_PORT: 80
       TZ: America/Sao_Paulo
