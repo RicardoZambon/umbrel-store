@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: zambon-pgadmin
+name: pgAdmin
+tagline: Web-based administration tool for PostgreSQL
+icon: https://img.icons8.com/fluency/480/pgadmin.png
+category: Development
+version: "latest"
+port: 5050
+description: >-
+  pgAdmin is the most popular and feature-rich open-source administration
+  and development platform for PostgreSQL. It provides a powerful graphical
+  interface to manage your PostgreSQL databases directly from your browser.
+
+
+  Access pgAdmin on port 5050 and connect to your PostgreSQL instance
+  running on your Umbrel server. Use the default credentials to log in,
+  then add your PostgreSQL server using hostname "postgresql" on port 5432.
+
+developer: pgAdmin Development Team
+website: https://www.pgadmin.org
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/pgadmin-org/pgadmin4
+support: https://github.com/pgadmin-org/pgadmin4/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of pgAdmin for UmbrelOS.
+dependencies:
+  - zambon-postgresql
+path: ""
+defaultUsername: "admin@umbrel.local"
+defaultPassword: "PgAdmin2025!"
