@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: zambon-mongodb
+name: MongoDB
+tagline: Leading NoSQL document database for modern applications
+icon: https://img.icons8.com/color/480/mongodb.png
+category: Development
+version: "8"
+port: 27017
+description: >-
+  MongoDB is a general-purpose, document-based NoSQL database built for modern application development.
+  Run it directly on your Umbrel server to store flexible JSON-like documents,
+  build APIs, and power your applications with a schema-free data model.
+
+
+  Connects on port 27017 with the default credentials configured in the container.
+  Use any MongoDB client (MongoDB Compass, Mongosh, Studio 3T) to connect and manage your databases.
+
+developer: MongoDB Inc.
+website: https://www.mongodb.com
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/docker-library/mongo
+support: https://github.com/docker-library/mongo/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of MongoDB 8 for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: "root"
+defaultPassword: "Mongo2025!"

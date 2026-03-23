@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: zambon-mysql
+name: MySQL
+tagline: The world's most popular open-source relational database
+icon: https://img.icons8.com/color/480/mysql-logo.png
+category: Development
+version: "8.4"
+port: 3306
+description: >-
+  MySQL is the world's most popular open-source relational database management system.
+  Run it directly on your Umbrel server to host databases for your applications,
+  perform data analytics, and manage structured data with full SQL support.
+
+
+  Connects on port 3306 with the default credentials configured in the container.
+  Use any MySQL client (MySQL Workbench, DBeaver, phpMyAdmin) to connect and manage your databases.
+
+developer: Oracle Corporation
+website: https://www.mysql.com
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/docker-library/mysql
+support: https://github.com/docker-library/mysql/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of MySQL 8.4 for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: "root"
+defaultPassword: "MySQL2025!"

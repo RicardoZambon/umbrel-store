@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo:8
+    container_name: mongodb
+    hostname: mongodb
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/umbrel/umbrel/home/Apps/zambon-mongodb:/data/db:rw
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Mongo2025!
+      TZ: America/Sao_Paulo
+
+networks:
+  mongodb:
+    name: mongodb
+    driver: bridge

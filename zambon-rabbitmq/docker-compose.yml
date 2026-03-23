@@ -1,0 +1,23 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4-management-alpine
+    container_name: rabbitmq
+    hostname: rabbitmq
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - /home/umbrel/umbrel/home/Apps/zambon-rabbitmq:/var/lib/rabbitmq:rw
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: RabbitMQ2025!
+      TZ: America/Sao_Paulo
+
+networks:
+  rabbitmq:
+    name: rabbitmq
+    driver: bridge

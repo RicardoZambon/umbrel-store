@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: zambon-rabbitmq
+name: RabbitMQ
+tagline: Reliable and mature open-source message broker
+icon: https://img.icons8.com/color/480/rabbitmq.png
+category: Development
+version: "4"
+port: 15672
+description: >-
+  RabbitMQ is a reliable, mature, and widely deployed open-source message broker.
+  Run it directly on your Umbrel server to enable asynchronous messaging,
+  task queues, and event-driven architectures for your applications.
+
+
+  Management UI available on port 15672. AMQP connections on port 5672.
+  Use the management dashboard or any AMQP client to connect and manage your queues.
+
+developer: Broadcom Inc.
+website: https://www.rabbitmq.com
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/docker-library/rabbitmq
+support: https://github.com/docker-library/rabbitmq/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of RabbitMQ 4 for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "RabbitMQ2025!"

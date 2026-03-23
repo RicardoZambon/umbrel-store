@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: zambon-postgresql
+name: PostgreSQL
+tagline: Powerful open-source relational database system
+icon: https://img.icons8.com/color/480/postgreesql.png
+category: Development
+version: "17"
+port: 5432
+description: >-
+  PostgreSQL is the world's most advanced open-source relational database.
+  Run it directly on your Umbrel server to host databases for your applications,
+  perform data analytics, and manage structured data with full SQL support.
+
+
+  Connects on port 5432 with the default credentials configured in the container.
+  Use any PostgreSQL client (pgAdmin, DBeaver, psql) to connect and manage your databases.
+
+developer: PostgreSQL Global Development Group
+website: https://www.postgresql.org
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/docker-library/postgres
+support: https://github.com/docker-library/postgres/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of PostgreSQL 17 for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: "postgres"
+defaultPassword: "Postgres2025!"
