@@ -1,0 +1,20 @@
+services:
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: redisinsight
+    hostname: redisinsight
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - redis
+    ports:
+      - "5540:5540"
+    volumes:
+      - /home/umbrel/umbrel/home/Apps/zambon-redisinsight:/data:rw
+    environment:
+      TZ: America/Sao_Paulo
+
+networks:
+  redis:
+    name: redis
+    external: true

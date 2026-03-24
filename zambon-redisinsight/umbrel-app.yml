@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: zambon-redisinsight
+name: RedisInsight
+tagline: Web-based GUI for managing and monitoring Redis
+icon: https://raw.githubusercontent.com/RedisInsight/RedisInsight/main/redisinsight/ui/src/assets/img/logo.svg
+category: Development
+version: "latest"
+port: 5540
+description: >-
+  RedisInsight is the official free GUI for Redis, developed by Redis Ltd.
+  It provides an intuitive interface to browse keys, run commands, monitor
+  performance, and debug your Redis databases directly from your browser.
+
+
+  Access RedisInsight on port 5540 and connect to your Redis instance
+  running on your Umbrel server. Use hostname "redis" on port 6379
+  with the default password configured in your Redis app.
+
+developer: Redis Ltd.
+website: https://redis.io/insight/
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/RedisInsight/RedisInsight
+support: https://github.com/RedisInsight/RedisInsight/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of RedisInsight for UmbrelOS.
+dependencies:
+  - zambon-redis
+path: ""
+defaultUsername: ""
+defaultPassword: ""
