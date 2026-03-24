@@ -2,7 +2,7 @@ manifestVersion: 1
 id: zambon-ssh-tunnel-qa
 name: SSH Tunnel QA
 tagline: SSH tunnel to QA database
-icon: https://img.icons8.com/color/480/ssh.png
+icon: https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gnometerminal.svg
 category: Development
 version: "1.0"
 port: 3306

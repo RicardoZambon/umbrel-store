@@ -2,7 +2,7 @@ manifestVersion: 1
 id: zambon-rabbitmq
 name: RabbitMQ
 tagline: Reliable and mature open-source message broker
-icon: https://img.icons8.com/color/480/rabbitmq.png
+icon: https://raw.githubusercontent.com/rabbitmq/rabbitmq-website/main/static/img/rabbitmq-logo.svg
 category: Development
 version: "4"
 port: 15672
