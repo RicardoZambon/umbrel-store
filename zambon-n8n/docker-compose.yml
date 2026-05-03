@@ -3,11 +3,12 @@ services:
     image: n8nio/n8n:latest
     container_name: n8n
     hostname: n8n
+    user: "0:0"
     restart: unless-stopped
     ports:
       - "5678:5678"
     volumes:
-      - /home/umbrel/umbrel/home/Apps/zambon-n8n:/home/node/.n8n:rw
+      - /home/umbrel/umbrel/home/Apps/n8n:/home/node/.n8n:rw
     environment:
       TZ: America/Sao_Paulo
       N8N_HOST: 0.0.0.0
