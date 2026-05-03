@@ -2,7 +2,7 @@ manifestVersion: 1
 id: zambon-n8n
 name: n8n
 tagline: Workflow automation tool for connecting apps and services
-icon: https://img.icons8.com/color/480/n8n.png
+icon: https://avatars.githubusercontent.com/u/45487711
 category: Automation
 version: "latest"
 port: 5678
