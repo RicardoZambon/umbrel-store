@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: zambon-n8n
+name: n8n
+tagline: Workflow automation tool for connecting apps and services
+icon: https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png
+category: Automation
+version: "latest"
+port: 5678
+description: >-
+  n8n is a free and source-available workflow automation tool. It allows you
+  to connect anything to everything via its fair-code model. With over 400
+  integrations, you can automate tasks across your apps and services with a
+  visual, node-based editor.
+
+
+  Self-host n8n on your Umbrel server for full control over your data and
+  workflows. Access the web interface on port 5678 to start building
+  automations.
+
+developer: n8n GmbH
+website: https://n8n.io
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/n8n-io/n8n
+support: https://github.com/n8n-io/n8n/issues
+gallery:
+  - https://i.imgur.com/ZkCWbV2.png
+releaseNotes: >-
+  Initial release of n8n for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
