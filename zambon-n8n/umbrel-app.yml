@@ -4,7 +4,7 @@ name: n8n
 tagline: Workflow automation tool for connecting apps and services
 icon: https://avatars.githubusercontent.com/u/45487711
 category: Automation
-version: "1.0.4"
+version: "1.0.5"
 port: 5678
 description: >-
   n8n is a free and source-available workflow automation tool. It allows you
@@ -26,8 +26,11 @@ support: https://github.com/n8n-io/n8n/issues
 gallery:
   - https://i.imgur.com/ZkCWbV2.png
 releaseNotes: >-
-  Revert the Tailscale HTTPS configuration and restore the local-network
-  webhook URL. n8n is served over http on the local network again.
+  Fix settings being lost on every update. The container runs as root, so n8n
+  stores its data in /root/.n8n, but the persistent volume was mounted at
+  /home/node/.n8n. The volume now targets /root/.n8n so the database,
+  encryption key, and credentials survive updates. You will need to complete
+  the setup one final time after this update.
 dependencies: []
 path: ""
 defaultUsername: ""
