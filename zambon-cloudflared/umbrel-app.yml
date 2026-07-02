@@ -4,7 +4,7 @@ name: Cloudflare Tunnel
 tagline: Expose local services securely through a Cloudflare Tunnel
 icon: https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/cloudflare.svg
 category: Networking
-version: "1.0"
+version: "1.0.1"
 port: 60123
 description: >-
   Runs a Cloudflare Tunnel (cloudflared) that connects your Umbrel to the
@@ -31,7 +31,9 @@ repo: https://github.com/RicardoZambon
 support: https://github.com/RicardoZambon
 gallery: []
 releaseNotes: >-
-  Initial release of Cloudflare Tunnel.
+  Also load the .env file from the app data directory
+  (/home/umbrel/umbrel/app-data/zambon-cloudflared/.env), so the token
+  works whether the file is created there or in home/Apps.
 dependencies: []
 path: "/metrics"
 defaultUsername: ""

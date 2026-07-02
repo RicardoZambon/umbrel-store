@@ -8,3 +8,5 @@ services:
     env_file:
       - path: /home/umbrel/umbrel/home/Apps/zambon-cloudflared/.env
         required: false
+      - path: ${APP_DATA_DIR}/.env
+        required: false
