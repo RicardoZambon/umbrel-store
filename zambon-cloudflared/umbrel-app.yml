@@ -1,0 +1,38 @@
+manifestVersion: 1
+id: zambon-cloudflared
+name: Cloudflare Tunnel
+tagline: Expose local services securely through a Cloudflare Tunnel
+icon: https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/cloudflare.svg
+category: Networking
+version: "1.0"
+port: 60123
+description: >-
+  Runs a Cloudflare Tunnel (cloudflared) that connects your Umbrel to the
+  Cloudflare network, allowing you to expose local services (like Nginx Proxy
+  Manager) to the internet without opening ports on your router.
+
+
+  After installing, create the environment file at
+  /home/umbrel/umbrel/home/Apps/zambon-cloudflared/.env
+  with your tunnel token (see .env.sample), then restart the app:
+
+  TUNNEL_TOKEN=your_tunnel_token_here
+
+
+  The tunnel token is obtained from the Cloudflare Zero Trust dashboard under
+  Networks > Tunnels. The app exposes cloudflared metrics on port 60123 so you
+  can verify the tunnel is up.
+
+developer: Ricardo Zambon
+website: https://github.com/RicardoZambon
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/RicardoZambon
+support: https://github.com/RicardoZambon
+gallery: []
+releaseNotes: >-
+  Initial release of Cloudflare Tunnel.
+dependencies: []
+path: "/metrics"
+defaultUsername: ""
+defaultPassword: ""
