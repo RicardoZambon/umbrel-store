@@ -1,0 +1,44 @@
+manifestVersion: 1
+id: zambon-code-server
+name: Code Server
+tagline: VS Code in the browser, running on your Umbrel
+icon: https://img.icons8.com/fluency/480/visual-studio-code-2019.png
+category: Development
+version: "1.0.0"
+port: 8443
+description: >-
+  code-server runs a full VS Code instance on your Umbrel server and serves it
+  to any browser on your network. Edit code, run a terminal, and install
+  extensions from a tablet, a laptop, or a machine that has nothing installed
+  on it.
+
+
+  Your files live in the Work folder of Umbrel's home storage, so everything
+  you create is visible in the Files app and over network shares. The
+  container's terminal has passwordless sudo, so you can install extra
+  packages as you need them.
+
+
+  This app runs with authentication disabled for convenience on a trusted
+  local network. Anyone who can reach port 8443 gets a shell on your server,
+  so do not expose it to the internet. To turn the login screen back on, set
+  PASSWORD in the app's .env file.
+
+developer: LinuxServer.io
+website: https://www.linuxserver.io
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/linuxserver/docker-code-server
+support: https://github.com/linuxserver/docker-code-server/issues
+gallery:
+  - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-1.png
+  - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-2.png
+releaseNotes: >-
+  Initial release. Runs linuxserver/code-server with authentication disabled,
+  stores everything in the Work folder of Umbrel home storage, and enables
+  passwordless sudo in the container terminal. Uninstall Niten Dev Environment
+  first, since both apps use port 8443.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

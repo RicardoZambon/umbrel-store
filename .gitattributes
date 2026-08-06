@@ -1,0 +1,4 @@
+# These files are executed by bash inside Linux containers.
+# CRLF endings would break the shebang, so pin them to LF.
+*.sh text eol=lf
+zambon-code-server/custom-cont-init.d/* text eol=lf

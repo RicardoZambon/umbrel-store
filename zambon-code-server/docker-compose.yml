@@ -1,0 +1,25 @@
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    hostname: code-server
+    restart: unless-stopped
+    ports:
+      - "8443:8443"
+    volumes:
+      - ${UMBREL_ROOT}/home/Work:/config:rw
+      - ${APP_DATA_DIR}/custom-cont-init.d:/custom-cont-init.d:ro
+    env_file:
+      - path: ${UMBREL_ROOT}/home/Work/.env
+        required: false
+      - path: ${APP_DATA_DIR}/.env
+        required: false
+    environment:
+      # 1000:1000 is the umbrel user, so files created in home/Work stay
+      # owned by umbrel and remain writable from the Files app and SMB.
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Sao_Paulo
+      DEFAULT_WORKSPACE: /config
+      # PASSWORD and HASHED_PASSWORD are intentionally unset: the image starts
+      # code-server with --auth none when neither is present.

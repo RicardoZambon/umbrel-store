@@ -1,0 +1,10 @@
+#!/bin/bash
+# Grant the container user (abc) passwordless sudo.
+#
+# The linuxserver image only touches sudoers when SUDO_PASSWORD or
+# SUDO_PASSWORD_HASH is set, and the rule it adds ("abc ALL=(ALL:ALL) ALL")
+# always prompts. This app runs with no password at all, so drop in a
+# NOPASSWD rule instead. If this script does not run, sudo simply keeps
+# prompting -- nothing else breaks.
+echo 'abc ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/abc-nopasswd
+chmod 0440 /etc/sudoers.d/abc-nopasswd
