@@ -1,0 +1,43 @@
+manifestVersion: 1
+id: zambon-vault
+name: Vault
+tagline: Turn your personal collections into an organized digital archive
+icon: https://img.icons8.com/fluency/480/safe.png
+category: Files
+version: "1.0.0"
+port: 7001
+description: >-
+  Vault turns your personal collections into organized, searchable digital
+  archives. Catalogue what you own, keep the details that matter to you, and
+  browse everything from any browser on your network.
+
+
+  On first start the app runs a setup wizard. Read the one-time token from the
+  container logs with "docker logs vault", open the app, and follow the wizard
+  to point Vault at a SQL Server 2022 or newer database and create your owner
+  account. If you use the SQL Server app on this Umbrel, enter your server's
+  LAN IP on port 1433 as the host: this app runs on its own network, so the
+  container name will not resolve.
+
+
+  Setup state and the generated JWT signing key live in the Vault folder of
+  Umbrel's home storage, so they are visible in the Files app and survive app
+  uninstall and reinstall.
+
+developer: Ricardo Zambon
+website: https://github.com/RicardoZambon
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon/Colecionary
+repo: https://github.com/RicardoZambon/Colecionary
+support: https://github.com/RicardoZambon/Colecionary/issues
+gallery: []
+releaseNotes: >-
+  Initial release. Runs the single Colecionary container (.NET API serving the
+  Angular frontend) on port 7001 and keeps its setup state in the Vault folder
+  of Umbrel home storage. Configure the database through the first-run wizard,
+  or headlessly by setting ConnectionStrings__Vault and Jwt__SigningKey in
+  .env. The image is amd64 only, since SQL Server has no ARM build.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
