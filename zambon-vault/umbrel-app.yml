@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.0.0"
+version: "1.0.1"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -24,6 +24,9 @@ description: >-
   Umbrel's home storage, so they are visible in the Files app and survive app
   uninstall and reinstall.
 
+
+  The image is amd64 only, since SQL Server has no ARM build.
+
 developer: Ricardo Zambon
 website: https://github.com/RicardoZambon
 submitter: Ricardo Zambon
@@ -32,11 +35,10 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Initial release. Runs the single Colecionary container (.NET API serving the
-  Angular frontend) on port 7001 and keeps its setup state in the Vault folder
-  of Umbrel home storage. Configure the database through the first-run wizard,
-  or headlessly by setting ConnectionStrings__Vault and Jwt__SigningKey in
-  .env. The image is amd64 only, since SQL Server has no ARM build.
+  Updates Vault to 1.0.1. The first-run setup wizard has more breathing room
+  and clearer messages, and the navigation icons and brand mark are now drawn
+  as SVG instead of font glyphs. Nothing to reconfigure: your database
+  settings and the Vault folder in Umbrel home storage carry over untouched.
 dependencies: []
 path: ""
 defaultUsername: ""
