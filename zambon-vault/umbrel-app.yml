@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.0.1"
+version: "1.2.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -20,9 +20,9 @@ description: >-
   container name will not resolve.
 
 
-  Setup state and the generated JWT signing key live in the Vault folder of
-  Umbrel's home storage, so they are visible in the Files app and survive app
-  uninstall and reinstall.
+  Setup state, the generated JWT signing key and your uploaded images live in
+  the Vault folder of Umbrel's home storage, so they are visible in the Files
+  app and survive app uninstall and reinstall.
 
 
   The image is amd64 only, since SQL Server has no ARM build.
@@ -35,10 +35,17 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.0.1. The first-run setup wizard has more breathing room
-  and clearer messages, and the navigation icons and brand mark are now drawn
-  as SVG instead of font glyphs. Nothing to reconfigure: your database
-  settings and the Vault folder in Umbrel home storage carry over untouched.
+  Updates Vault to 1.2.0, bringing everything since 1.0.1. Items can track
+  multiple copies, each with its own condition. Group fields now have a type
+  and a default sort order. Collections can be exported as a zip from
+  Settings.
+
+
+  Images have moved out of the database and onto disk, one folder per owner,
+  under "images" in the Vault folder of Umbrel's home storage. Your existing
+  images are copied there automatically the first time 1.2.0 starts, so let
+  that first start finish before restarting the app. Nothing to reconfigure:
+  your database settings carry over untouched.
 dependencies: []
 path: ""
 defaultUsername: ""

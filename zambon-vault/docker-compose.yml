@@ -1,6 +1,6 @@
 services:
   vault:
-    image: ricardozambon/vault:1.0.1
+    image: ricardozambon/vault:1.2.0
     container_name: vault
     hostname: vault
     # The image runs as USER $APP_UID (1654), but Docker creates the bind
@@ -19,6 +19,12 @@ services:
         required: false
     environment:
       TZ: America/Sao_Paulo
+      # Image bytes live on disk as of 1.2.0. The default is relative to the
+      # content root, i.e. inside the container: on the first 1.2.0 start the
+      # app copies the blobs out of the database and the migration then drops
+      # that column, so an unmounted root would lose every image on the next
+      # app update. Keep this pointed at the bind mount below.
+      ImageStorage__Root: /data/config/images
       # ConnectionStrings__Vault and Jwt__SigningKey are intentionally unset:
       # without them the app starts its first-run setup wizard. Set them in
       # .env to configure the database headlessly instead.
