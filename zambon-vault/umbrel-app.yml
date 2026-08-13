@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.2.0"
+version: "1.3.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,17 +35,18 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.2.0, bringing everything since 1.0.1. Items can track
-  multiple copies, each with its own condition. Group fields now have a type
-  and a default sort order. Collections can be exported as a zip from
-  Settings.
+  Updates Vault to 1.3.0. A collection now reads as a structure instead of one
+  mixed list: groups can declare how large the complete set is, so you see
+  progress against the series rather than only against what you have
+  catalogued, and they are listed alphabetically.
 
 
-  Images have moved out of the database and onto disk, one folder per owner,
-  under "images" in the Vault folder of Umbrel's home storage. Your existing
-  images are copied there automatically the first time 1.2.0 starts, so let
-  that first start finish before restarting the app. Nothing to reconfigure:
-  your database settings carry over untouched.
+  Uploaded images can be framed by picking the part that matters instead of
+  taking a centre crop, and the preview shows only the places that image will
+  actually appear. Discarding the framing editor no longer applies the upload.
+  Photos of wantlist items are drawn in grey on the item page as well as on the
+  cards. Nothing to reconfigure: your database settings and the Vault folder in
+  Umbrel home storage carry over untouched.
 dependencies: []
 path: ""
 defaultUsername: ""

@@ -1,6 +1,6 @@
 services:
   vault:
-    image: ricardozambon/vault:1.2.0
+    image: ricardozambon/vault:1.3.0
     container_name: vault
     hostname: vault
     # The image runs as USER $APP_UID (1654), but Docker creates the bind
