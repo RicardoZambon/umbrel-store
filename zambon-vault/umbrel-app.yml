@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.3.0"
+version: "1.4.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,18 +35,17 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.3.0. A collection now reads as a structure instead of one
-  mixed list: groups can declare how large the complete set is, so you see
-  progress against the series rather than only against what you have
-  catalogued, and they are listed alphabetically.
+  Updates Vault to 1.4.0. Vault now speaks Portuguese as well as English,
+  switchable at any time from the switcher, where each language carries its own
+  flag. The setup wizard follows your browser's language, since it runs before
+  there is anything to remember a preference in.
 
 
-  Uploaded images can be framed by picking the part that matters instead of
-  taking a centre crop, and the preview shows only the places that image will
-  actually appear. Discarding the framing editor no longer applies the upload.
-  Photos of wantlist items are drawn in grey on the item page as well as on the
-  cards. Nothing to reconfigure: your database settings and the Vault folder in
-  Umbrel home storage carry over untouched.
+  From an item you can now step through the rest of its group without going
+  back to the collection, and an item with no estimated value shows what you
+  paid for it instead. Adding an item while you are looking at a group files it
+  in that group. Nothing to reconfigure: your database settings and the Vault
+  folder in Umbrel home storage carry over untouched.
 dependencies: []
 path: ""
 defaultUsername: ""
