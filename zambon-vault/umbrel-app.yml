@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.4.0"
+version: "1.5.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,17 +35,20 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.4.0. Vault now speaks Portuguese as well as English,
-  switchable at any time from the switcher, where each language carries its own
-  flag. The setup wizard follows your browser's language, since it runs before
-  there is anything to remember a preference in.
+  Updates Vault to 1.5.0. Amounts are no longer stuck on the dollar: the
+  account picks the currency every value is read in, and a single collection
+  can override it when the things in it were bought in another one. Vaults that
+  predate this start on USD, the symbol they were already showing, so change it
+  in Settings if that is not your currency.
 
 
-  From an item you can now step through the rest of its group without going
-  back to the collection, and an item with no estimated value shows what you
-  paid for it instead. Adding an item while you are looking at a group files it
-  in that group. Nothing to reconfigure: your database settings and the Vault
-  folder in Umbrel home storage carry over untouched.
+  A collection can now be exported on its own, carrying only the photos it
+  actually uses, and an archive can be imported back. When a collection in the
+  file shares a name with one you already have, Vault asks which to overwrite
+  before writing anything, and overwriting replaces the collection rather than
+  merging into it. Nothing to reconfigure: your database settings and the Vault
+  folder in Umbrel home storage carry over untouched, and the new columns are
+  applied on first start.
 dependencies: []
 path: ""
 defaultUsername: ""
