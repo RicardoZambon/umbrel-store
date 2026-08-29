@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.5.0"
+version: "1.6.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,20 +35,25 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.5.0. Amounts are no longer stuck on the dollar: the
-  account picks the currency every value is read in, and a single collection
-  can override it when the things in it were bought in another one. Vaults that
-  predate this start on USD, the symbol they were already showing, so change it
-  in Settings if that is not your currency.
+  Updates Vault to 1.6.0. A group can now be split into sections, so a long
+  group reads as parts instead of one run of items, and the collection settings
+  page has its two-pane layout back, with the groups tab as master-detail.
 
 
-  A collection can now be exported on its own, carrying only the photos it
-  actually uses, and an archive can be imported back. When a collection in the
-  file shares a name with one you already have, Vault asks which to overwrite
-  before writing anything, and overwriting replaces the collection rather than
-  merging into it. Nothing to reconfigure: your database settings and the Vault
-  folder in Umbrel home storage carry over untouched, and the new columns are
-  applied on first start.
+  This release also hardens the parts that face the network. Sign-in is
+  throttled per account and per address, with a delay that always expires on
+  its own instead of locking an account out. Saving a collection now carries
+  the version it was read at, so a stale tab can no longer replace someone
+  else's work without noticing. Photos that nothing points at any more are
+  marked and only reclaimed after a grace period, and the collector stays off
+  unless you turn it on.
+
+
+  Nothing to reconfigure: your database settings and the Vault folder in Umbrel
+  home storage carry over untouched, and the new columns are applied on first
+  start. If you put a reverse proxy or a tunnel in front of Vault, see
+  .env.sample: the sign-in throttle counts by address, and behind a proxy every
+  caller looks like the proxy.
 dependencies: []
 path: ""
 defaultUsername: ""
