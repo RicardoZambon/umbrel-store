@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.6.0"
+version: "1.7.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,25 +35,30 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.6.0. A group can now be split into sections, so a long
-  group reads as parts instead of one run of items, and the collection settings
-  page has its two-pane layout back, with the groups tab as master-detail.
+  Updates Vault to 1.7.0. Items can be edited in bulk: select rows in the list
+  or the grid and set the group, section, year, value, tags, custom fields or
+  every copy's status at once. Tags are editable on the item itself and can be
+  filtered on, with the filter living in the URL so a filtered list survives a
+  reload and can be shared. Groups can be moved under another parent, search
+  reaches tags, descriptions and custom values, and the app finally works on a
+  phone.
 
 
-  This release also hardens the parts that face the network. Sign-in is
-  throttled per account and per address, with a delay that always expires on
-  its own instead of locking an account out. Saving a collection now carries
-  the version it was read at, so a stale tab can no longer replace someone
-  else's work without noticing. Photos that nothing points at any more are
-  marked and only reclaimed after a grace period, and the collector stays off
-  unless you turn it on.
+  Every irreversible action now asks before it happens, naming what it will
+  destroy and how many items that is: deleting a collection used to go through
+  on one click. Controls that could not do what they said were retired or
+  disabled, so link sharing no longer suggests a collection is public and an
+  invite no longer claims an email was sent.
+
+
+  Roles are now enforced by the server rather than only carried in the token.
+  If you gave someone Viewer access expecting them to edit, that will now be
+  refused, and the interface stops offering them the buttons.
 
 
   Nothing to reconfigure: your database settings and the Vault folder in Umbrel
-  home storage carry over untouched, and the new columns are applied on first
-  start. If you put a reverse proxy or a tunnel in front of Vault, see
-  .env.sample: the sign-in throttle counts by address, and behind a proxy every
-  caller looks like the proxy.
+  home storage carry over untouched, and this release adds no settings and no
+  database changes.
 dependencies: []
 path: ""
 defaultUsername: ""
