@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.7.0"
+version: "1.8.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,25 +35,19 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.7.0. Items can be edited in bulk: select rows in the list
-  or the grid and set the group, section, year, value, tags, custom fields or
-  every copy's status at once. Tags are editable on the item itself and can be
-  filtered on, with the filter living in the URL so a filtered list survives a
-  reload and can be shared. Groups can be moved under another parent, search
-  reaches tags, descriptions and custom values, and the app finally works on a
-  phone.
+  Updates Vault to 1.8.0. Items can now be imported into a collection from a
+  spreadsheet, so cataloguing a set no longer means filling in one form per
+  record. The format is the item table itself -- name, group, year, copies,
+  condition and value under the headings the table already prints, in either
+  language -- so copying what is on screen into a sheet, extending it and
+  pasting it back works without learning a format. Any extra column becomes a
+  custom field, declared on the destination group when it does not have it yet.
 
 
-  Every irreversible action now asks before it happens, naming what it will
-  destroy and how many items that is: deleting a collection used to go through
-  on one click. Controls that could not do what they said were retired or
-  disabled, so link sharing no longer suggests a collection is public and an
-  invite no longer claims an email was sent.
-
-
-  Roles are now enforced by the server rather than only carried in the token.
-  If you gave someone Viewer access expecting them to edit, that will now be
-  refused, and the interface stops offering them the buttons.
+  Every row is previewed before anything is written: the dialog shows what will
+  be created, which rows could not be read and why, and the whole import lands
+  as a single save. Opened from inside a group, the rows go into that group;
+  opened from the collection, the group column decides.
 
 
   Nothing to reconfigure: your database settings and the Vault folder in Umbrel
