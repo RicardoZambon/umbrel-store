@@ -4,7 +4,7 @@ name: Vault
 tagline: Turn your personal collections into an organized digital archive
 icon: https://img.icons8.com/fluency/480/safe.png
 category: Files
-version: "1.8.0"
+version: "1.9.0"
 port: 7001
 description: >-
   Vault turns your personal collections into organized, searchable digital
@@ -35,24 +35,25 @@ repo: https://github.com/RicardoZambon/Colecionary
 support: https://github.com/RicardoZambon/Colecionary/issues
 gallery: []
 releaseNotes: >-
-  Updates Vault to 1.8.0. Items can now be imported into a collection from a
-  spreadsheet, so cataloguing a set no longer means filling in one form per
-  record. The format is the item table itself -- name, group, year, copies,
-  condition and value under the headings the table already prints, in either
-  language -- so copying what is on screen into a sheet, extending it and
-  pasting it back works without learning a format. Any extra column becomes a
-  custom field, declared on the destination group when it does not have it yet.
+  Updates Vault to 1.9.0. A custom field no longer has to belong to a group: it
+  can be declared once for the whole collection, so a detail that applies to
+  everything you own is filled in one place instead of being repeated on every
+  group. Fields can also be scoped to the individual copy, so two copies of the
+  same item can carry different details -- where each one is kept, what you paid
+  for it -- while the item itself stays one record.
 
 
-  Every row is previewed before anything is written: the dialog shows what will
-  be created, which rows could not be read and why, and the whole import lands
-  as a single save. Opened from inside a group, the rows go into that group;
-  opened from the collection, the group column decides.
+  Spreadsheet import gets the corrections that first release needed: an empty
+  cell now leaves the existing value alone instead of clearing it, the last
+  level of a group path can name a section, and importing a collection's
+  archive restores its sections. An account holding a copy from before this
+  change no longer fails to load.
 
 
-  Nothing to reconfigure: your database settings and the Vault folder in Umbrel
-  home storage carry over untouched, and this release adds no settings and no
-  database changes.
+  Your database is upgraded on first start, which adds the field scopes and
+  fills in the copy values older records never stored. Nothing to reconfigure:
+  the database settings and the Vault folder in Umbrel home storage carry over
+  untouched, and this release adds no settings.
 dependencies: []
 path: ""
 defaultUsername: ""
