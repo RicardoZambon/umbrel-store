@@ -4,22 +4,15 @@ services:
     container_name: code-server
     hostname: code-server
     restart: unless-stopped
-    ports:
-      - "8443:8443"
-      - "4200-4202:4200-4202"
-      - "5173-5175:5173-5175"
-      - "5100:5100"
-    volumes:
-      - ${UMBREL_ROOT}/home/Work:/config:rw
-      - ${APP_DATA_DIR}/custom-cont-init.d:/custom-cont-init.d:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: bridge
+    user: root
     group_add:
       - "987" # Replace 999 with the output of `stat -c '%g' /var/run/docker.sock`
-    env_file:
-      - path: ${UMBREL_ROOT}/home/Work/.env
-        required: false
-      - path: ${APP_DATA_DIR}/.env
-        required: false
+    ports:
+      - "8443:8443"
+      #- "4200-4202:4200-4202"
+      #- "5173-5175:5173-5175"
+      #- "5100:5100"
     environment:
       - PUID=1000
       - PGID=1000
@@ -29,3 +22,15 @@ services:
       - APT_PACKAGES=nodejs npm claude
       - DOCKER_HOST=unix:///var/run/docker.sock
       - DOCKER_SOCK_GID=987
+    volumes:
+      - ${UMBREL_ROOT}/home/Work:/config:rw
+      - ${APP_DATA_DIR}/custom-cont-init.d:/custom-cont-init.d:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - path: ${UMBREL_ROOT}/home/Work/.env
+        required: false
+      - path: ${APP_DATA_DIR}/.env
+        required: false
+    extra_hosts:
+      - "umbrel.local:10.32.0.1"
+      - "host.docker.internal:host-gateway"
