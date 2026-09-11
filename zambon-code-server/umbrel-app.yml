@@ -4,7 +4,7 @@ name: Code Server
 tagline: VS Code in the browser, running on your Umbrel
 icon: https://img.icons8.com/fluency/480/visual-studio-code-2019.png
 category: Development
-version: "1.0.0"
+version: "1.0.1"
 port: 8443
 description: >-
   code-server runs a full VS Code instance on your Umbrel server and serves it
