@@ -1,0 +1,104 @@
+# Seq (logs) + Jaeger (traces) + Prometheus (metrics) + Grafana (dashboards): the three telemetry
+# signals an OpenTelemetry-instrumented application emits, plus somewhere to look at them.
+#
+# Every endpoint is published on the host, so an application running OUTSIDE this compose project —
+# on the host, or inside another app such as Code Server — can reach them at 172.17.0.1. That is the
+# usual case for a development machine, where the app under test is a `dotnet run` / `npm start`
+# process rather than a container on this network.
+services:
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    hostname: seq
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - observability
+    ports:
+      - "5342:80"      # UI
+      - "5341:5341"    # ingestion. Published, not just exposed: a logger running outside this compose
+                       # project cannot resolve seq:5341 by service name, so it posts to
+                       # 172.17.0.1:5341 instead.
+    volumes:
+      - /home/umbrel/umbrel/home/Apps/zambon-observability/seq:/data:rw
+    environment:
+      ACCEPT_EULA: Y
+      SEQ_FIRSTRUN_NOAUTHENTICATION: "true"
+      TZ: America/Sao_Paulo
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    hostname: jaeger
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - observability
+    ports:
+      - "16687:16686"  # UI
+      - "4317:4317"    # OTLP/gRPC — the usual trace-export endpoint, e.g.
+                       #   OTEL_EXPORTER_OTLP_ENDPOINT=http://172.17.0.1:4317
+                       # Host port deliberately matches the protocol convention, so 4317 is gRPC and
+                       # 4318 is HTTP rather than one standing in for the other.
+      - "4318:4318"    # OTLP/HTTP, for anything that prefers it
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+      TZ: America/Sao_Paulo
+
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    container_name: prometheus
+    hostname: prometheus
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - observability
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      # Prometheus RECEIVES OTLP directly — no collector container, no exporter package: an application
+      # pushes metrics to /api/v1/otlp/v1/metrics. Must be a FLAG; there is no config-file equivalent
+      # and Prometheus refuses to start if you put it in prometheus.yml.
+      - --web.enable-otlp-receiver
+      - --storage.tsdb.retention.time=6h
+    ports:
+      - "9091:9090"    # not 9090 — a common local collision
+    volumes:
+      - /home/umbrel/umbrel/app-data/zambon-observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /home/umbrel/umbrel/home/Apps/zambon-observability/prometheus:/prometheus:rw
+    environment:
+      TZ: America/Sao_Paulo
+
+  grafana:
+    image: grafana/grafana:11.5.1
+    container_name: grafana
+    hostname: grafana
+    user: "0:0"
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    networks:
+      - observability
+    ports:
+      - "3001:3000"
+    volumes:
+      # The Prometheus datasource is provisioned from a file shipped with this app, so Grafana opens
+      # with a working datasource and nothing to click through.
+      - /home/umbrel/umbrel/app-data/zambon-observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      # Grafana's data dir, which is ALSO where the file provider looks for dashboards
+      # (provisioning/dashboards/dashboards.yml -> /var/lib/grafana/dashboards). No dashboards ship
+      # with the app: drop .json files into Apps/zambon-observability/grafana/dashboards on the server
+      # and they are picked up within 30s, a subdirectory per Grafana folder. Your own dashboards stay
+      # on your server rather than in this app store.
+      - /home/umbrel/umbrel/home/Apps/zambon-observability/grafana:/var/lib/grafana:rw
+    environment:
+      # LOCAL / TRUSTED-LAN ONLY. Anyone who can reach port 3001 is an admin.
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_USERS_DEFAULT_THEME: dark
+      TZ: America/Sao_Paulo
+
+networks:
+  observability:
+    name: observability
+    driver: bridge

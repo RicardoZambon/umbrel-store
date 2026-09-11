@@ -11,8 +11,12 @@ services:
     ports:
       - "8443:8443"
       #- "4200-4202:4200-4202"
-      #- "5173-5175:5173-5175"
-      #- "5100:5100"
+      # Dev servers started from inside this container (dotnet run, vite, ng serve, ...).
+      # Without a published port they bind inside the container only: reachable from the host at the
+      # container's bridge address, but not from a browser anywhere else on the LAN. Remember to bind
+      # to 0.0.0.0 rather than localhost, or the published port forwards to nothing.
+      - "5100-5101:5100-5101"
+      - "5173-5175:5173-5175"
     environment:
       - PUID=1000
       - PGID=1000

@@ -1,0 +1,52 @@
+services:
+  kafka:
+    image: apache/kafka:3.7.0
+    container_name: kafka
+    hostname: kafka
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - kafka
+    ports:
+      - "9093:9093"
+    volumes:
+      - /home/umbrel/umbrel/home/Apps/zambon-kafka:/var/lib/kafka/data:rw
+    environment:
+      # Single-node KRaft (no ZooKeeper): this node is both controller and broker.
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: controller,broker
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9094
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9093,CONTROLLER://0.0.0.0:9094,PLAINTEXT_INTERNAL://0.0.0.0:29093
+      # THE SETTING THAT MATTERS. A Kafka client connects to the bootstrap address, is handed back the
+      # ADVERTISED address, and reconnects to THAT. Most single-node examples advertise
+      # PLAINTEXT://localhost:9093, which is correct only for a client running on the Docker host: from
+      # inside another container "localhost" is that container itself, so bootstrap succeeds and then
+      # every produce and fetch fails to connect — a confusing failure, because a plain TCP check of the
+      # bootstrap port passes.
+      #
+      # 172.17.0.1 is the docker0 gateway: it is the host as seen from any bridge container AND a valid
+      # local address on the host itself, so one value works for both. (host.docker.internal is not
+      # usable here — it resolves only inside containers given the matching extra_hosts entry, never on
+      # the host.) Apps that join the "kafka" network below should use the internal listener instead.
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.17.0.1:9093,PLAINTEXT_INTERNAL://kafka:29093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      # Wolverine publishes to topics it never explicitly creates.
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      # Persisted, unlike the dev-stack compose which keeps the default /tmp/kraft-combined-logs and so
+      # re-formats on every recreate. The image's entrypoint formats the dir on first start and tolerates
+      # an already-formatted one, so the bind mount is safe across restarts and app updates.
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      # Pinned so the persisted log dir stays valid across app updates. This is the image's own default
+      # value — stated explicitly because a changed CLUSTER_ID against a formatted dir is a start failure.
+      CLUSTER_ID: 5L6g3nShT-eMCtK--X86sw
+      # 1G is the image default and it will take all of it. Nothing here is a broker under load.
+      KAFKA_HEAP_OPTS: "-Xmx1G -Xms1G"
+      TZ: America/Sao_Paulo
+
+networks:
+  kafka:
+    name: kafka
+    driver: bridge

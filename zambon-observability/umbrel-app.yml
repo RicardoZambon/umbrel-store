@@ -1,0 +1,47 @@
+manifestVersion: 1
+id: zambon-observability
+name: Observability Stack
+tagline: Seq, Jaeger, Prometheus and Grafana in one app
+icon: https://img.icons8.com/color/480/grafana.png
+category: Development
+version: "1.0.0"
+port: 3001
+description: >-
+  A single app that gives a development machine the three telemetry signals an
+  OpenTelemetry-instrumented service emits, plus somewhere to look at them.
+
+
+  Seq (port 5342) collects structured logs over its Serilog sink on 5341. Jaeger
+  (port 16687) collects distributed traces over OTLP on 4317/gRPC and 4318/HTTP.
+  Prometheus (port 9091) is started with the OTLP receiver enabled, so a service
+  can PUSH metrics to /api/v1/otlp/v1/metrics without a collector container or an
+  exporter package. Grafana (port 3001) opens with the Prometheus datasource
+  already provisioned; drop dashboard JSON into the app's folder under Apps and
+  it is picked up within 30 seconds, one Grafana folder per subdirectory.
+
+
+  Every endpoint is published on the host, so services running outside this
+  compose project — on the host, or inside another app such as Code Server —
+  reach them at 172.17.0.1 on the ports above.
+
+
+  Grafana runs with anonymous admin access and Seq with authentication disabled.
+  This is a local development convenience. Do not expose these ports to the
+  internet.
+
+developer: Datalust, CNCF, Prometheus Authors, Grafana Labs
+website: https://opentelemetry.io
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/jaegertracing/jaeger
+support: https://github.com/jaegertracing/jaeger/issues
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release. Bundles Seq, Jaeger all-in-one, Prometheus 3.1 with the OTLP
+  receiver enabled, and Grafana 11.5 with a provisioned Prometheus datasource and a
+  file-provider dashboard folder.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

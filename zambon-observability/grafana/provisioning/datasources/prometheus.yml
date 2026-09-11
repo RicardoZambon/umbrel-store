@@ -1,0 +1,13 @@
+# Provisioned so the app is usable with no click-through setup: Grafana opens with a working
+# data source pointing at the Prometheus container on this app's network.
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    jsonData:
+      # Matches prometheus.yml's scrape_interval so Grafana picks sensible step sizes by default.
+      timeInterval: 15s

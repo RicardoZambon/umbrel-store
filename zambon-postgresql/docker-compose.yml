@@ -9,6 +9,36 @@ services:
       - postgresql
     ports:
       - "5432:5432"
+    # The stock postgres image ships the conservative upstream defaults, which assume they might be
+    # running on very small hardware. Two of these are worth calling out:
+    #   idle_in_transaction_session_timeout — 0 by default, meaning an idle-in-transaction session is
+    #     never reaped. Frameworks that keep a background reader open (event-sourcing projection
+    #     daemons, for instance) will then block DDL and TRUNCATE indefinitely, and the symptom is a
+    #     job that hangs rather than an error. 300000 = 5 minutes.
+    #   max_connections — 100 by default, which is thin once several applications share one instance
+    #     and each opens its own pool.
+    # The memory figures assume a server with room to spare and an instance shared across apps; scale
+    # shared_buffers and effective_cache_size to your own hardware.
+    command:
+      - "postgres"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "idle_in_transaction_session_timeout=300000"
+      - "-c"
+      - "shared_buffers=2GB"
+      - "-c"
+      - "effective_cache_size=8GB"
+      - "-c"
+      - "work_mem=64MB"
+      - "-c"
+      - "maintenance_work_mem=1GB"
+      - "-c"
+      - "max_wal_size=8GB"
+      - "-c"
+      - "min_wal_size=2GB"
+      - "-c"
+      - "wal_compression=on"
     volumes:
       - /home/umbrel/umbrel/home/Apps/zambon-postgresql:/var/lib/postgresql/data:rw
     environment:

@@ -1,0 +1,40 @@
+manifestVersion: 1
+id: zambon-kafka
+name: Apache Kafka
+tagline: Distributed event streaming platform (single-node KRaft)
+icon: https://img.icons8.com/color/480/apache-kafka.png
+category: Development
+version: "3.7.0"
+port: 9093
+description: >-
+  Apache Kafka is a distributed event streaming platform used for high-performance
+  data pipelines, streaming analytics, and event-driven services. This app runs a
+  single-node KRaft broker — no ZooKeeper — with topic auto-creation enabled, which
+  is the shape a development machine wants.
+
+
+  The broker listens on port 9093 and advertises itself as 172.17.0.1:9093, the
+  Docker bridge gateway. That address is reachable both from the Umbrel host and
+  from any container on a bridge network, so a client running inside another app
+  (Code Server, for example) can produce and consume without extra configuration.
+  Apps that join the "kafka" network can instead use the internal listener at
+  kafka:29093.
+
+
+  Log data is persisted to the Apps/zambon-kafka folder, so topics and offsets
+  survive a restart or an app update.
+
+developer: Apache Software Foundation
+website: https://kafka.apache.org
+submitter: Ricardo Zambon
+submission: https://github.com/RicardoZambon
+repo: https://github.com/apache/kafka
+support: https://kafka.apache.org/contact
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release of Apache Kafka 3.7.0 (KRaft, single node) for UmbrelOS.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

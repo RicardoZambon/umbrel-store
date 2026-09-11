@@ -1,0 +1,18 @@
+# Prometheus is used here as an OTLP RECEIVER, not as a scraper: applications push metrics straight to
+# /api/v1/otlp/v1/metrics, which is enabled by --web.enable-otlp-receiver in docker-compose.yml. That
+# keeps the application vendor-neutral and needs no collector container and no exporter package.
+#
+# There is deliberately no scrape_configs entry for your services: pushing over OTLP means they expose
+# no /metrics endpoint to scrape. Prometheus scrapes only itself, so the UI has something to confirm it
+# is alive before anything starts pushing.
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Retention is a COMMAND-LINE flag (--storage.tsdb.retention.time), not a config-file field — Prometheus
+# refuses to start if it appears here. It is set in docker-compose.yml alongside the OTLP receiver flag.
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
