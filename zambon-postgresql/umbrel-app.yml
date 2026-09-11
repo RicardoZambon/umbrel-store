@@ -4,7 +4,7 @@ name: PostgreSQL
 tagline: Powerful open-source relational database system
 icon: https://img.icons8.com/color/480/postgreesql.png
 category: Development
-version: "17"
+version: "17.9"
 port: 5432
 description: >-
   PostgreSQL is the world's most advanced open-source relational database.
@@ -24,7 +24,23 @@ support: https://github.com/docker-library/postgres/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
-  Initial release of PostgreSQL 17 for UmbrelOS.
+  Applies non-default server tuning, and tracks the patch version the
+  postgres:17-alpine image actually ships.
+
+
+  idle_in_transaction_session_timeout was 0, meaning an idle-in-transaction
+  session is never reaped. A client that keeps a background reader open then
+  blocks DDL and TRUNCATE indefinitely, and the symptom is a job that hangs
+  rather than an error. It is now 5 minutes.
+
+
+  max_connections goes from 100 to 200, which the default leaves thin once
+  several applications share one instance and each opens its own pool.
+  shared_buffers, work_mem and the WAL sizes are raised to match a server with
+  room to spare; scale them to your own hardware if yours is smaller.
+
+
+  Your data is untouched by this update.
 dependencies: []
 path: ""
 defaultUsername: "postgres"

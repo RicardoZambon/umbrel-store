@@ -4,7 +4,7 @@ name: Code Server
 tagline: VS Code in the browser, running on your Umbrel
 icon: https://img.icons8.com/fluency/480/visual-studio-code-2019.png
 category: Development
-version: "1.0.3"
+version: "1.0.4"
 port: 8443
 description: >-
   code-server runs a full VS Code instance on your Umbrel server and serves it
@@ -34,11 +34,11 @@ gallery:
   - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-1.png
   - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-2.png
 releaseNotes: >-
-  Fixes the custom-cont-init.d scripts never running. Umbrel only refreshes a
-  whitelist of files in app-data when an app updates, so the scripts were
-  stuck at whatever was copied at install time. A pre-start hook now re-syncs
-  them from the app store on every start, and both scripts are committed
-  executable, which linuxserver.io's init requires.
+  Publishes ports 5100-5101 and 5173-5175 for dev servers started inside the
+  container. Without a published port they bind inside the container only:
+  reachable from the host at the container's bridge address, but not from a
+  browser anywhere else on the network. Remember to bind to 0.0.0.0 rather
+  than localhost, or the published port forwards to nothing.
 dependencies: []
 path: ""
 defaultUsername: ""
