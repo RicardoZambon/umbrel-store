@@ -10,7 +10,7 @@ services:
       - "5173-5175:5173-5175"
       - "5100:5100"
     volumes:
-      - ${UMBREL_ROOT}/Work:/config:rw
+      - ${UMBREL_ROOT}/home/Work:/config:rw
       - ${APP_DATA_DIR}/zambon-code-server/custom-cont-init.d:/custom-cont-init.d:ro
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
