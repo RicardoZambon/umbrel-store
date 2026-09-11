@@ -13,6 +13,8 @@ services:
       - ${UMBREL_ROOT}/home/Work:/config:rw
       - ${APP_DATA_DIR}/custom-cont-init.d:/custom-cont-init.d:ro
       - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - "987"
     env_file:
       - path: ${UMBREL_ROOT}/home/Work/.env
         required: false
@@ -26,4 +28,4 @@ services:
       - PWA_APPNAME=code-server
       - APT_PACKAGES=nodejs npm claude
       - DOCKER_HOST=unix:///var/run/docker.sock
-      - DOCKER_SOCK_GID=2375
+      - DOCKER_SOCK_GID=987
