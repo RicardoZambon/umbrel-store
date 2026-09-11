@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# Re-sync custom-cont-init.d from the app store checkout into app-data.
+#
+# Umbrel only refreshes a whitelist of files in app-data when an app is
+# updated -- docker-compose.yml, *.template, exports.sh, torrc, hooks and
+# umbrel-app.yml. Everything else keeps whatever was copied at install time,
+# so ${APP_DATA_DIR}/custom-cont-init.d never picks up changes from the repo.
+#
+# This runs on every app start, after source_app has exported UMBREL_ROOT and
+# APP_DATA_DIR. It also restores the executable bit, which linuxserver.io's
+# init-custom-files requires: it skips any file that fails [[ -x ... ]].
+
+set -uo pipefail
+
+if [[ -z "${APP_DATA_DIR:-}" ]] || [[ -z "${UMBREL_ROOT:-}" ]]; then
+  echo "[pre-start] APP_DATA_DIR or UMBREL_ROOT unset, leaving custom-cont-init.d alone"
+  exit 0
+fi
+
+app_id="${APP_ID:-zambon-code-server}"
+dest="${APP_DATA_DIR}/custom-cont-init.d"
+
+src=""
+for candidate in "${UMBREL_ROOT}"/app-stores/*/"${app_id}"/custom-cont-init.d; do
+  if [[ -d "${candidate}" ]]; then
+    src="${candidate}"
+  fi
+done
+
+if [[ -z "${src}" ]]; then
+  echo "[pre-start] no custom-cont-init.d found in any app store checkout, keeping ${dest} as is"
+  exit 0
+fi
+
+echo "[pre-start] syncing ${src} -> ${dest}"
+rm -rf "${dest}"
+mkdir -p "${dest}"
+cp -a "${src}"/. "${dest}"/
+chmod 0755 "${dest}"
+find "${dest}" -type f -exec chmod 0755 {} +
