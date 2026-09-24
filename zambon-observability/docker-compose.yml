@@ -44,6 +44,20 @@ services:
     environment:
       COLLECTOR_OTLP_ENABLED: "true"
       TZ: America/Sao_Paulo
+      # all-in-one keeps spans in memory, and MEMORY_MAX_TRACES defaults to 0 = UNBOUNDED. Left unset,
+      # a long-lived instance simply grows: this one reached 18 GiB — over half a 35 GiB host, which
+      # then went to swap — after about two weeks of receiving traces. There is no eviction to fall
+      # back on, so the number below IS the retention policy.
+      #
+      # 50k traces is several hours of development throughput. Raise it if a trace you wanted has
+      # already aged out; do not unset it.
+      MEMORY_MAX_TRACES: "50000"
+    # Belt to the braces above: a hard ceiling makes a runaway a dead tracing container — an annoyance —
+    # rather than memory pressure across every other app on the host.
+    deploy:
+      resources:
+        limits:
+          memory: 2g
 
   prometheus:
     image: prom/prometheus:v3.1.0

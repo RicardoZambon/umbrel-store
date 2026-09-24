@@ -4,7 +4,7 @@ name: Observability Stack
 tagline: Seq, Jaeger, Prometheus and Grafana in one app
 icon: https://img.icons8.com/color/480/grafana.png
 category: Development
-version: "1.0.0"
+version: "1.0.1"
 port: 3001
 description: >-
   A single app that gives a development machine the three telemetry signals an
@@ -38,9 +38,11 @@ support: https://github.com/jaegertracing/jaeger/issues
 gallery:
   - https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
-  Initial release. Bundles Seq, Jaeger all-in-one, Prometheus 3.1 with the OTLP
-  receiver enabled, and Grafana 11.5 with a provisioned Prometheus datasource and a
-  file-provider dashboard folder.
+  Bounds Jaeger's in-memory trace store, which was previously unbounded: with
+  MEMORY_MAX_TRACES unset, all-in-one never evicts, and a long-running instance grew
+  to 18 GiB — over half the host's memory — after about two weeks. It now retains
+  50,000 traces and is capped at 2 GiB. Older traces age out sooner; nothing else
+  changes, and the other three services are untouched.
 dependencies: []
 path: ""
 defaultUsername: ""
