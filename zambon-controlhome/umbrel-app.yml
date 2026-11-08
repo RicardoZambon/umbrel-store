@@ -2,7 +2,7 @@ manifestVersion: 1
 id: zambon-controlhome
 category: automation
 name: ControlHome
-version: "0.2.0"
+version: "0.2.1"
 tagline: Control your home's devices, floor plans and energy in one place
 icon: https://raw.githubusercontent.com/RicardoZambon/ControlHome/main/deploy/umbrel/icon.svg
 description: >-
@@ -20,8 +20,9 @@ description: >-
   The setup code the wizard asks for is this app's password, shown by Umbrel. Household accounts have the roles Admin,
   Member and Viewer. Available in English and Portuguese (Brazil).
 releaseNotes: >-
-  First version in this store: LG ThinQ, Intelbras cameras and access terminals, Samsung SmartThings and MQTT
-  connectors, floor plans, history and energy charts.
+  SmartThings is easier to connect: ControlHome can now create your SmartThings app from a token, with no command line.
+  Setup instructions show one step per line. Accessibility fixes in menus, floor plans and searchable lists.
+  The database step now explains .local host names, and umbrel.local reaches this Umbrel.
 developer: Ricardo Zambon
 website: https://github.com/RicardoZambon/ControlHome
 dependencies: []
