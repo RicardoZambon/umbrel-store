@@ -4,7 +4,7 @@ name: Code Server
 tagline: VS Code in the browser, running on your Umbrel
 icon: https://img.icons8.com/fluency/480/visual-studio-code-2019.png
 category: Development
-version: "1.0.5"
+version: "1.0.6"
 port: 8443
 description: >-
   code-server runs a full VS Code instance on your Umbrel server and serves it
@@ -34,11 +34,10 @@ gallery:
   - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-1.png
   - https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot-2.png
 releaseNotes: >-
-  Also publishes port 5102, so the enterprise-management API is reachable from
-  the network alongside the cost (5100) and project (5101) APIs. Ports
-  5100-5102 and 5173-5175 are published for dev servers started inside the
-  container; remember to bind to 0.0.0.0 rather than localhost, or the
-  published port forwards to nothing.
+  Publishes ports 5100-5109 instead of 5100-5102. Port 5103 is now reachable
+  from the network, and 5104-5109 are spare for future dev servers. Ports
+  5173-5175 are unchanged. Dev servers must bind to 0.0.0.0 rather than
+  localhost, or the published port forwards to nothing.
 dependencies: []
 path: ""
 defaultUsername: ""
